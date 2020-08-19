@@ -9,7 +9,7 @@ Usage:
 ```console
 $ make
 $ sudo insmod justuse.ko
-$ DEVICE_NUMBER=$(grep "justuse" /proc/devices | awk '{print $1}')
+$ DEVICE_NUMBER=$(awk '$2 == "justuse" {print $1}' /proc/devices)
 $ sudo mknod /dev/urandom c $DEVICE_NUMBER 0
 $ sudo mknod /dev/random c $DEVICE_NUMBER 0
 ```
